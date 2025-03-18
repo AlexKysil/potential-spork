@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+        "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+        "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+
+    <module name="TreeWalker">
+
+        <module name="WhitespaceAround"/>
+        <module name="EmptyLineSeparator"/>
+
+        <module name="MethodName">
+            <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+        </module>
+        <module name="ClassName">
+            <property name="format" value="^[A-Z][a-zA-Z0-9]*$"/>
+        </module>
+        <module name="ConstantName">
+            <property name="format" value="^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$"/>
+        </module>
+
+        <module name="ImportOrder">
+            <property name="ordered" value="true"/>
+        </module>
+        <module name="Indentation">
+            <property name="basicOffset" value="4"/>
+            <property name="braceAdjustment" value="0"/>
+        </module>
+
+        <module name="CyclomaticComplexity">
+            <property name="max" value="10"/>
+        </module>
+        <module name="BooleanExpressionComplexity">
+            <property name="max" value="3"/>
+        </module>
+        <module name="MagicNumber">
+            <property name="ignoreNumbers" value="true"/>
+        </module>
+
+        <module name="VisibilityModifier"/>
+        <module name="DesignForExtension"/>
+
+        <module name="JavadocStyle"/>
+        <module name="MissingJavadocMethod"/>
+
+        <module name="EmptyBlock">
+            <property name="option" value="TEXT"/>
+        </module>
+        <module name="EqualsHashCode"/>
+    </module>
+
+    <module name="LineLength">
+        <property name="max" value="160"/>
+    </module>
+
+    <module name="FileTabCharacter"/>
+</module>
