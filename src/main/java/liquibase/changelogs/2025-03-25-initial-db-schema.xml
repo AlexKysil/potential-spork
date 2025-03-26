@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1" author="olek_kys">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="customer"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="customer">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="first_name" type="VARCHAR(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(128)"/>
+            <column name="telephone" type="NUMBER(16)"/>
+            <column name="address" type="VARCHAR(200)"/>
+            <column name="postcode" type="NUMBER(8)"/>
+        </createTable>
+
+    </changeSet>
+
+    <changeSet id="2" author="olek_kys">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="product"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="product">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category" type="VARCHAR(50)"/>
+            <column name="count" type="INTEGER(1000)"/>
+            <column name="price" type="DECIMAL(10,2)"/>
+            <column name="description" type="VARCHAR(250)"/>
+            <column name="customer_id" type="UUID">
+                <constraints foreignKeyName="fk_customer"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint
+                baseTableName="product"
+                baseColumnNames="customer_id"
+                constraintName="fk_customer"
+                referencedTableName="customer"
+                referencedColumnNames="id"
+        />
+
+    </changeSet>
+
+</databaseChangeLog>
