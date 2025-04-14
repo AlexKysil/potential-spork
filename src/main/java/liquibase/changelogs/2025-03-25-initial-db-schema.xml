@@ -24,7 +24,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="email" type="VARCHAR(128)"/>
-            <column name="telephone" type="NUMBER(16)"/>
+            <column name="phone_number" type="NUMBER(16)"/>
             <column name="address" type="VARCHAR(200)"/>
             <column name="postcode" type="NUMBER(8)"/>
         </createTable>
